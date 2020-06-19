@@ -1,0 +1,22 @@
+{
+  "name": "beautebackend",
+  "version": "1.0.0",
+  "description": "Peluquería Beaute",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./index.js --exec babel-node"
+  },
+  "author": "Noelia Ramos",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.14.2",
+    "mongoose": "^5.9.18"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "nodemon": "^2.0.4"
+  }
+}
