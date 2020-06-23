@@ -74,10 +74,16 @@ const typeDefs= gql`
         descripcion: String!
         precio: Float! 
     }
-
+    input TipoServicioTurnoInput {
+        descripcion: String!
+    }
     input TurnosArregloInput{
-        id:ID,
-        descripcion: String
+        id: ID
+        fecha: String!
+        hora: String!
+        servicio: TipoServicioTurnoInput
+        profesional: ProfesionalTurnoInput
+        precio: Float!
     }
     input ClienteInput{
        id: ID
@@ -88,7 +94,19 @@ const typeDefs= gql`
        telefono: String!
        turno: [TurnosArregloInput]
     }
-
+    input ProfesionalTurnoInput{
+        id: ID
+        nombre: String!
+        apellido: String!
+        matricula: String!
+        nombrelocal: String!
+        direccionlocal: String!
+    }
+    input RubroInput{
+        id: ID
+        descripcion: String!
+        tiposervicio:[TipoServicioInput]!
+    }
     type QueryAll{
         obtenerClientes: [Cliente]
         obtenerCliente: Cliente
