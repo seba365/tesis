@@ -1,4 +1,6 @@
 import {Usuario} from '../models/Usuario';
+import {Cliente} from '../models/Cliente';
+import {TipoServicio} from '../models/TipoServicio';
 
 const resolvers = {
     QueryAll:{
@@ -95,27 +97,6 @@ obtenerTipoServicio: async () => {
 MutationAll: {
 nuevoUsuario : async(_, { input } ) => {
     console.log('addUser');
-    
-    // const addUser = new Usuario({
-    //     dni: input.dni,
-    //     nombre: input.nombre,
-    //     apellido: input.apellido,
-    //     email: input.email,
-    //     telefono: input.telefono,
-    //     matricula: input.matricula,
-    //     nombrelocal: input.nombrelocal,
-    //     direccionlocal: input.direccionlocal
-    // });
-    //  addUser.id=addUser._id;
-
-    // console.log(input);
-
-    // return new Promise((resolve,object) => {
-    //     addUser.save((error) =>{
-    //         if(error) rejects(error)
-    //         else resolve(addUser)
-    //     })
-    // });
     try {
         console.log(input);
          console.log('pre const addUser');
@@ -127,7 +108,8 @@ nuevoUsuario : async(_, { input } ) => {
                     telefono: input.telefono,
                     matricula: input.matricula,
                     nombrelocal: input.nombrelocal,
-                    direccionlocal: input.direccionlocal
+                    direccionlocal: input.direccionlocal,
+                    password: input.password
                 });
         
         console.log('const  addUser');
@@ -138,8 +120,53 @@ nuevoUsuario : async(_, { input } ) => {
         console.log(error);
         
     }
+},
+nuevoTipoServicio : async(_, { input } ) => {
+    console.log('addServicio');
+    try {
+        console.log(input);
+         console.log('pre const addServicio');
+            const addServicio = new TipoServicio({
+                descripcion: input.descripcion,
+                    precio: input.precio
+                });
+        
+        console.log('const  addServicio');
+        const result = await addServicio.save();
+        console.log('result');
+        return  result;
+    } catch (error) {
+        console.log(error);
+        
+    }
+},
+
+nuevoCliente : async(_, { input } ) => {
+    console.log('addCliente');
+    try {
+        console.log(input);
+         console.log('pre const addCliente');
+            const addCliente = new Cliente({
+                    dni: input.dni,
+                    nombre: input.nombre,
+                    apellido: input.apellido,
+                    email: input.email,
+                    telefono: input.telefono,
+                    turno: input.turno
+                });
+        
+        console.log('const  addCliente');
+        const result = await addCliente.save();
+        console.log('result');
+        return  result;
+    } catch (error) {
+        console.log(error);
+        
+    }
 }
+
 }
+
 
 }
 

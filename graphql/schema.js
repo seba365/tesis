@@ -70,6 +70,25 @@ const typeDefs= gql`
         password: String!
     }
 
+    input TipoServicioInput {
+        descripcion: String!
+        precio: Float! 
+    }
+
+    input TurnosArregloInput{
+        id:ID,
+        descripcion: String
+    }
+    input ClienteInput{
+       id: ID
+       dni: String!
+       nombre: String!
+       apellido: String!
+       email: String!
+       telefono: String!
+       turno: [TurnosArregloInput]
+    }
+
     type QueryAll{
         obtenerClientes: [Cliente]
         obtenerCliente: Cliente
@@ -86,11 +105,13 @@ const typeDefs= gql`
     
     type MutationAll{
         nuevoUsuario(input:UsuarioInput):Usuario
+        nuevoTipoServicio(input:TipoServicioInput):TipoServicio
+        nuevoCliente(input:ClienteInput):Cliente
     }
 
     schema{
         query:QueryAll
-        mutation: MutationAll
+        mutation: MutationAll 
     }
 `;
 

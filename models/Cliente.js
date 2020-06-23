@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const usuariosSchema = new mongoose.Schema ({
+const clienteSchema = new mongoose.Schema ({
 
 
     dni: {
@@ -31,30 +31,13 @@ const usuariosSchema = new mongoose.Schema ({
         required :true,
         trim: true
     },
-    matricula: {
-        type: String,
-        required :true,
-        trim: true,
-        unique :true
-    },
-    nombrelocal:{
-        type: String,
-        required :true,
-        trim: true 
-    },
-    direccionlocal: {
-        type: String,
-        required :true,
-        trim: true
-    },
-    password: {
-        type: String,
-        required :true,
-        trim: true
+    turno: {
+        type: Array,
+        required :true
     }
 });
 // const Usuario = mongoose.model('Usuario',UsuariosSchema);
 // export { Usuario };
 // module.exports = mongoose.model('usuarios',usuariosSchema);
-const Usuario = mongoose.model('usuarios',usuariosSchema);
-export {Usuario};
+const Cliente = mongoose.model('cliente',clienteSchema);
+export {Cliente};
